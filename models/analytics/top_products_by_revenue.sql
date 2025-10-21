@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='view'
+    )
+}}
+
+
 SELECT
     p.product_name,
     m.manufacturer_name,
@@ -22,4 +29,5 @@ GROUP BY
     m.manufacturer_name,
     customer_type
 ORDER BY
+
     total_revenue DESC
