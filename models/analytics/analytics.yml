@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: customer_segmentation # The name of your materialized view model
+    description: "Summary of customer lifetime spending and favorite categories."
+    columns:
+      # ----------------------------------------------------
+      # Test 1: Null Value Check (Built-in `not_null` test)
+      # ----------------------------------------------------
+      - name: customer_name
+        description: The unique name of the customer.
+        tests:
+          - unique # Ensure the customer name is a unique identifier
+          - not_null # Fails if any customer_name is NULL
+
+      # -----------------------------------------------------------------
+      # Test 2: Positive Amount Check (Requires custom generic test macro)
+      # -----------------------------------------------------------------
+      - name: total_lifetime_spending
+        description: The total amount the customer has spent.
+        tests:
+          - not_null # Total spending must not be null
+          # This assumes you have a custom test macro named `positive_values`
+          # defined in your macros/ or tests/generic/ folder (see Section 2).
+          - positive_values
