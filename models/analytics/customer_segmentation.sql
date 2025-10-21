@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='materialized_view'
+        materialized='view'
     )
 }}
 
@@ -35,3 +35,4 @@ GROUP BY
 ORDER BY
 
     total_lifetime_spending DESC
+
