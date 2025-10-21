@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='view'
+    )
+}}
+
+
 SELECT
     DATE_TRUNC('month', s.sale_date) AS sales_month,
     p.category,
@@ -23,4 +30,5 @@ GROUP BY
     i.warehouse_location
 ORDER BY
     sales_month,
+
     total_revenue DESC
