@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized='materialized_view'
+    )
+}}
+
 WITH customer_category_spending AS (
     SELECT
         c.customer_name,
@@ -27,4 +33,5 @@ FROM
 GROUP BY
     customer_name
 ORDER BY
+
     total_lifetime_spending DESC
